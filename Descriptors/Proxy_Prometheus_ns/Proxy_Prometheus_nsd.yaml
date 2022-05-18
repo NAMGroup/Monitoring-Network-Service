@@ -1,0 +1,23 @@
+nsd:
+  nsd:
+  - description: NS for Prometheus with 1 vdu
+    designer: UoP
+    df:
+    - id: default-df
+      vnf-profile:
+      - id: '1'
+        virtual-link-connectivity:
+        - constituent-cpd-id:
+          - constituent-base-element-id: '1'
+            constituent-cpd-id: vnf-cp0-ext
+          virtual-link-profile-id: public
+        vnfd-id: PrometheusVNF
+    id: PrometheusNSD
+    name: PrometheusNSD
+    version: '1.0'
+    virtual-link-desc:
+    - id: public
+      mgmt-network: true
+    - id: network1
+    vnfd-id:
+    - PrometheusVNF

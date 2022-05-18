@@ -1,0 +1,49 @@
+vnfd:
+  description: uses an image with Prometheus
+  df:
+  - id: default-df
+    instantiation-level:
+    - id: default-instantiation-level
+      vdu-level:
+      - number-of-instances: 1
+        vdu-id: PrometheusVNF-VM
+    vdu-profile:
+    - id: PrometheusVNF-VM
+      min-number-of-instances: 1
+  ext-cpd:
+  - id: vnf-cp0-ext
+    int-cpd:
+      cpd: eth0-int
+      vdu-id: PrometheusVNF-VM
+  id: ProxyPrometheusVNF
+  mgmt-cp: vnf-cp0-ext
+  product-name: Prometheus
+  provider: UoP
+  sw-image-desc:
+  - id: Prometheus
+    image: Prometheus-ubuntu-20.04
+    name: Prometheus
+  vdu:
+  - cloud-init-file: cloud-init.cfg
+    id: PrometheusVNF-VM
+    int-cpd:
+    - id: eth0-int
+      virtual-network-interface-requirement:
+      - name: eth0
+        virtual-interface:
+          type: PARAVIRT
+    name: PrometheusVNF-VM
+    sw-image-desc: Prometheus
+    virtual-compute-desc: PrometheusVNF-VM-compute
+    virtual-storage-desc:
+    - PrometheusVNF-VM-storage
+  version: '1.0'
+  virtual-compute-desc:
+  - id: PrometheusVNF-VM-compute
+    virtual-cpu:
+      num-virtual-cpu: 2
+    virtual-memory:
+      size: 8.0
+  virtual-storage-desc:
+  - id: PrometheusVNF-VM-storage
+    size-of-storage: 20
